@@ -1,0 +1,11 @@
+/*folgende gehoert zu TetrixWindow.paint() Methode*/		
+/*TESTZIEL ob alle Steine vollstaendig sind*/
+
+stein=new Stein(g,SteinTyp.WS_Stein,Grad.GRAD0,new Point(myRoboter.getFensterbreite()/2,30));
+
+		while(true){
+			try{Thread.sleep(myRoboter.getLevel().getGeschwindigkeit());}catch(InterruptedException e){}
+			stein.loeschStein(g, getBackground());
+			stein.makeOffset(0, 1);
+			stein.drawStein(g);
+		}

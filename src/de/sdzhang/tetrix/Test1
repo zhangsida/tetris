@@ -1,0 +1,22 @@
+/*folgende gehoert zu TetrixWindow.paint() Methode*/		
+/*TESTZIEL ob alle Steine vollstaendig sind*/	
+		int i=4,j=50;
+		for(SteinTyp steine:SteinTyp.values()){
+			new Stein(g,steine,Grad.GRAD0,new Point(i,j));
+			i=i+5*16;
+		}
+		i=4;j+=5*16;
+		for(SteinTyp steine:SteinTyp.values()){
+			new Stein(g,steine,Grad.GRAD1,new Point(i,j));
+			i=i+5*16;
+		}
+		i=4;j+=5*16;
+		for(SteinTyp steine:SteinTyp.values()){
+			new Stein(g,steine,Grad.GRAD2,new Point(i,j));
+			i=i+5*16;
+		}
+		i=4;j+=5*16;
+		for(SteinTyp steine:SteinTyp.values()){
+			new Stein(g,steine,Grad.GRAD3,new Point(i,j));
+			i=i+5*16;
+		}

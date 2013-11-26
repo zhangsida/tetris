@@ -1,0 +1,245 @@
+class DrawStein{
+		DrawStein(Graphics g) {
+			
+			switch(steine){
+			
+				case Quadrat_Stein:
+					drawQuad_Stein(g);
+					break;
+				
+				case L_Stein:
+					drawL_Stein(g);
+					break;
+					
+				case WL_Stein:
+					drawWL_Stein(g);
+					break;
+					
+				case T_Stein:
+					drawT_Stein(g);
+					break;
+					
+				case I_Stein:
+					drawI_Stein(g);
+					break;
+				
+				case S_Stein:
+					drawS_Stein(g);
+					break;
+					
+				case WS_Stein:
+					drawWS_Stein(g);
+					break;
+			}
+				
+		}
+
+		private void drawS_Stein(Graphics g) {
+			switch(getGrad()){
+			case GRAD0:
+			case GRAD2:
+				for(int i=0;i<2;i++){
+					drawSteinElement(g,offset.x+getEinheit()+i*getEinheit(),offset.y);
+				}
+				for(int i=0;i<2;i++){
+					drawSteinElement(g,offset.x+i*getEinheit(),offset.y+getEinheit());
+				}
+				setBreite(3);
+				setHoehe(2);
+				break;
+			case GRAD1:
+			case GRAD3:
+				//S_Stein nach Uhrrichtung 90 Grad drehen////////////
+				for(int i=0;i<2;i++){
+					drawSteinElement(g,offset.x,offset.y+i*getEinheit());
+				}
+				for(int i=0;i<2;i++){
+					drawSteinElement(g,offset.x+getEinheit(),offset.y+getEinheit()+i*getEinheit());
+				}
+				setBreite(2);
+				setHoehe(3);
+				break;
+			}
+		}
+
+		private void drawI_Stein(Graphics g) {
+			switch(getGrad()){
+			case GRAD0:
+			case GRAD2:
+				//I_Stein senkrecht///////////////////////////////
+				for(int i=0;i<4;i++){
+					drawSteinElement(g,offset.x,offset.y+i*getEinheit());
+				}
+				setBreite(1);
+				setHoehe(4);
+				break;
+			case GRAD1:
+			case GRAD3:
+				//I_Stein waagerecht/////////////////////////////////
+				for(int i=0;i<4;i++){
+					drawSteinElement(g,offset.x+i*getEinheit(),offset.y);
+				}
+				setBreite(4);
+				setHoehe(1);
+				break;
+			}
+		}
+
+		private void drawT_Stein(Graphics g) {
+			switch(getGrad()){
+			case GRAD0:
+				for(int i=0;i<3;i++){
+					drawSteinElement(g,offset.x+i*getEinheit(),offset.y);
+				}
+				drawSteinElement(g,offset.x+getEinheit(),offset.y+getEinheit());
+				setBreite(3);
+				setHoehe(2);
+				break;
+			case GRAD1:
+				drawSteinElement(g,offset.x,offset.y+getEinheit());
+				for(int i=0;i<3;i++){
+					drawSteinElement(g,offset.x+getEinheit(),offset.y+i*getEinheit());
+				}
+				setBreite(2);
+				setHoehe(3);
+				break;
+			case GRAD2:
+				//T_Stein nach Uhrrichtung 180 Grad drehen///////////
+				for(int i=0; i<3; i++){
+					drawSteinElement(g,offset.x+i*getEinheit(),offset.y+getEinheit());
+				}
+				drawSteinElement(g,offset.x+getEinheit(),offset.y);
+				setBreite(3);
+				setHoehe(2);
+				break;
+			case GRAD3:
+				//T_Stein nach Uhrrichtung 270 Grad drehen////////////
+				for(int i=0;i<3;i++){
+					drawSteinElement(g,offset.x,offset.y+i*getEinheit());
+				}
+				drawSteinElement(g,offset.x+getEinheit(),offset.y+getEinheit());
+				setBreite(2);
+				setHoehe(3);
+				break;
+			}
+		}
+
+		private void drawWL_Stein(Graphics g) {
+			//Wiederspiegelung von L_Stein
+			switch(getGrad()){
+			case GRAD0:
+				for(int i=0;i<3;i++){
+					drawSteinElement(g,offset.x+getEinheit(),offset.y+i*getEinheit());
+				}
+				drawSteinElement(g,offset.x,offset.y+2*getEinheit());
+				setBreite(2);
+				setHoehe(3);
+				break;
+			case GRAD1:
+				drawSteinElement(g);
+				for(int i=0;i<3;i++){
+					drawSteinElement(g,offset.x+i*getEinheit(),offset.y+getEinheit());
+				}
+				setBreite(3);
+				setHoehe(2);
+				break;
+			case GRAD2:
+				for(int i=0;i<3;i++){
+					drawSteinElement(g,offset.x,offset.y+i*getEinheit());
+				}
+				drawSteinElement(g, offset.x+getEinheit(), offset.y);
+				setBreite(2);
+				setHoehe(3);
+				break;
+			case GRAD3:
+				for(int i=0;i<3;i++){
+					drawSteinElement(g,offset.x+i*getEinheit(),offset.y);
+				}
+				drawSteinElement(g, offset.x+2*getEinheit(), offset.y+getEinheit());
+				setBreite(3);
+				setHoehe(2);
+				break;
+			}
+		}		
+		
+		private void drawWS_Stein(Graphics g) {
+			//Wiederspiegelung von S_Stein
+			switch(getGrad()){
+			case GRAD0:
+			case GRAD2:
+				for(int i=0;i<2;i++){
+					drawSteinElement(g,offset.x+i*getEinheit(),offset.y);
+				}
+				for(int i=0;i<2;i++){
+					drawSteinElement(g,offset.x+getEinheit()+i*getEinheit(),offset.y+getEinheit());
+				}
+				setBreite(3);
+				setHoehe(2);
+				break;
+			case GRAD1:
+			case GRAD3:
+				//90 Grad von W_S_Stein
+				for(int i=0;i<2;i++){
+					drawSteinElement(g,offset.x,offset.y+getEinheit()+i*getEinheit());
+				}
+				for(int i=0;i<2;i++){
+					drawSteinElement(g,offset.x+getEinheit(),offset.y+i*getEinheit());
+				}
+				setBreite(2);
+				setHoehe(3);
+				break;
+			}
+		}
+
+		private void drawL_Stein(Graphics g) {
+			switch(grad){
+			case GRAD0:
+				for(int i=0;i<3;i++){
+					drawSteinElement(g,offset.x,offset.y+i*getEinheit());
+				}
+				drawSteinElement(g,offset.x+getEinheit(),offset.y+2*getEinheit());
+				
+				setBreite(2);
+				setHoehe(3);
+				break;
+				
+			case GRAD1:
+				for(int i=0;i<3;i++){
+					drawSteinElement(g,offset.x+i*getEinheit(),offset.y);
+				}
+				drawSteinElement(g, offset.x, offset.y+getEinheit());
+				
+				setBreite(3);
+				setHoehe(2);
+				break;
+			case GRAD2:
+				drawSteinElement(g,offset.x,offset.y);
+				for(int i=0;i<3;i++){
+					drawSteinElement(g,offset.x+getEinheit(),offset.y+i*getEinheit());
+				}
+				setBreite(2);
+				setHoehe(3);
+				break;
+			case GRAD3:
+				drawSteinElement(g,offset.x+2*getEinheit(),offset.y);
+				for(int i=0;i<3;i++){
+					drawSteinElement(g,offset.x+i*getEinheit(),offset.y+getEinheit());
+				}
+				setBreite(3);
+				setHoehe(2);
+				break;
+			}	
+		}
+
+		private void drawQuad_Stein(Graphics g) {
+			drawSteinElement(g);
+			drawSteinElement(g,offset.x+getEinheit(),offset.y);
+			drawSteinElement(g,offset.x,offset.y+getEinheit());
+			drawSteinElement(g,offset.x+getEinheit(),offset.y+getEinheit());
+			
+			setBreite(2);
+			setHoehe(2);
+			
+		}
+
+	}
