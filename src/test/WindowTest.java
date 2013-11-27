@@ -298,6 +298,7 @@ public class WindowTest extends Frame {
 	}
 
 	//Test draw Funktionen
+	@SuppressWarnings("unused")
 	private void mypaint(Graphics g){
 		//assenpunkt  ap
 		//innerenpunkt ip
